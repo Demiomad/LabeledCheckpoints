@@ -4,20 +4,55 @@
 using namespace geode::prelude;
 
 class $modify(PlayLayer) {
+    std::string getFntFileFromIndex(int index) {
+        switch (index) {
+            case -3: {
+                return "bigFont.fnt";
+            }
+
+            case -2: {
+                return "goldFont.fnt";
+            }
+
+            case -1: {
+                return "chatFont.fnt";
+            }
+
+            case 0: {
+                auto fntFile = this->m_attemptLabel->getFntFile();
+                return fntFile;
+            }
+
+            default: {
+                auto fntName = fmt::format("gjFont{:02d}.fnt", index);
+                return fntName;
+            }
+        }
+    }
+    
     CheckpointObject* createCheckpoint() {
         CheckpointObject* checkpoint = PlayLayer::createCheckpoint();
 
         if (m_isPlatformer) // platformer mode wont and will never work properly
             return checkpoint;
 
-        auto percent = this->getCurrentPercent();
-        auto percentString = fmt::format("{:.0f}%", floor(percent));
+        auto mod = Mod::get();
+        auto precision = mod->getSettingValue<int>("percentage-precision");
+        auto scale = mod->getSettingValue<float>("label-size");
+        auto opacity = mod->getSettingValue<float>("label-opacity");
+        auto fontIndex = mod->getSettingValue<int>("label-font");
+        auto color = mod->getSettingValue<ccColor3B>("label-color");
 
-        auto percentLabel = CCLabelBMFont::create(percentString.c_str(), "bigFont.fnt");
+        auto percent = this->getCurrentPercent();
+        auto percentString = fmt::format("{:.{}f}%", percent, precision);
+
+        auto percentLabel = CCLabelBMFont::create(percentString.c_str(), getFntFileFromIndex(fontIndex).c_str());
         auto physicalCheckpointObj = checkpoint->m_physicalCheckpointObject;
         auto contentSize = physicalCheckpointObj->getContentSize();
 
-        percentLabel->setScale(0.5f);
+        percentLabel->setColor(color);
+        percentLabel->setOpacity(opacity * 255);
+        percentLabel->setScale(scale);
         percentLabel->setAnchorPoint({ 0.5f, 0.5f });
         percentLabel->setPosition(contentSize / 2);
         percentLabel->setID("checkpoint-label"_spr);

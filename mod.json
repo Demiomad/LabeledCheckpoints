@@ -1,4 +1,53 @@
 {
+	"settings": {
+		"percentage-precision": {
+			"type": "int",
+			"default": 0,
+			"min": 0,
+			"max": 3,
+			"name": "Percentage Precision",
+			"description": "Controls how many decimal places to show."
+		},
+		"label-size": {
+			"type": "float",
+			"default": 0.5,
+			"min": 0,
+			"max": 1,
+			"name": "Label Size",
+			"description": "Controls how big the percentage label is."
+		},
+		"label-opacity": {
+			"type": "float",
+			"default": 1,
+			"min": 0,
+			"max": 1,
+			"name": "Label Opacity",
+			"description": "Controls how visible the percentage label is."
+		},
+		"label-font": {
+			"type": "int",
+			"name": "Label Font",
+			"default": -3,
+			"min": -3,
+			"max": 59,
+			"description": "Controls the font used in the percentage label.\n\nNotes:\n\n<cj>-3</c> is Pusab, <cj>-2</c> is <cy>Golden</c> Pusab, <cj>-1</c> is Helvetica/Aller (depends on your graphics quality setting) and <cj>0</c> is whatever font is used in the level\n- <cy>To use font numbers greater than 0: refer to the level editor for the font each number corresponds to, subtract that number by 1, and then put it here.</c>",
+			"control": {
+				"input": true,
+				"slider": true,
+				"arrows": true,
+				"big-arrows": true,
+				"arrow-step": 1,
+				"big-arrow-step": 5,
+				"slider-step": 1
+			}
+		},
+		"label-color": {
+			"type": "color",
+            "default": "#ffffff",
+			"name": "Label Color",
+			"description": "Controls the color of the percentage label."
+		}
+	},
 	"geode": "5.7.1",
 	"gd": {
 		"win": "2.2081",
@@ -8,13 +57,18 @@
 	},
 	"id": "demiomad.labeled-checkpoints",
 	"name": "Labeled Checkpoints",
-	"version": "v1.0.0",
+	"version": "v1.1.0",
 	"developer": "Demiomad",
 	"description": "Adds a percentage label to checkpoints",
 	"dependencies": {
 		"geode.node-ids": ">=v1.23.3"
 	},
 	"links": {
-		"source": "https://github.com/Demiomad/LabeledCheckpoints.git"
+		"source": "https://github.com/Demiomad/LabeledCheckpoints"
+	},
+	"resources": {
+		"sprites": [
+			"resources/labeledCheckpoint.png"
+		]
 	}
 }
