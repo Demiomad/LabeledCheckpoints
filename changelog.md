@@ -1,10 +1,13 @@
+# 1.2.0
+- <cg>Added</c> the ability to use a .fnt file.
+
 # 1.1.0
 - <cg>Added</c> settings to:
-    - Control the <cy>percentage precision</c>. (How many decimal places to show)
-    - Control the <cy>label opacity</c>.
-    - Control the <cy>label size</c>.
-    - Control the <cy>label font</c>.
-    - Control the <cy>label color</c>.
+    - Control <cy>how many decimal places to show in the percentage label</c>.
+    - Change the <cy>label's opacity</c>.
+    - <cy>Shrink</c> or <cy>enlarge</c> the label.
+    - Change the <cy>label's font</c>.
+    - Change the <cy>label's color</c>.
 - <cy>Changed</c> the mod icon.
 - <cg>Added</c> a button in the pause menu that opens the mod's <cy>settings</c>.
 

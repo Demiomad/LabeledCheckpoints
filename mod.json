@@ -30,7 +30,7 @@
 			"default": -3,
 			"min": -3,
 			"max": 59,
-			"description": "Controls the font used in the percentage label.\n\nNotes:\n\n<cj>-3</c> is Pusab, <cj>-2</c> is <cy>Golden</c> Pusab, <cj>-1</c> is Helvetica/Aller (depends on your graphics quality setting) and <cj>0</c> is whatever font is used in the level\n- <cy>To use font numbers greater than 0: refer to the level editor for the font each number corresponds to, subtract that number by 1, and then put it here.</c>",
+			"description": "Controls the font used in the percentage label.\n\nNotes:\n\n<cj>-3</c> is Pusab, <cj>-2</c> is <cy>Golden</c> Pusab, <cj>-1</c> is Helvetica/Aller (depends on your graphics quality setting) and <cj>0</c> is whatever font is used in the level\n- <cy>To use font numbers greater than 0: Refer to the level editor for the font each number corresponds to, subtract that number by 1, and then put it here.</c>\n\nIf you'd like to use a custom font (requires a .fnt file), enable the \"Use Custom Font\" setting.",
 			"control": {
 				"input": true,
 				"slider": true,
@@ -46,6 +46,29 @@
             "default": "#ffffff",
 			"name": "Label Color",
 			"description": "Controls the color of the percentage label."
+		},
+		"use-custom-font": {
+			"type": "bool",
+			"name": "Use Custom Font",
+			"description": "Uses the font file specified by the \"Font File\" setting.",
+			"default": false
+		},
+		"font-file": {
+			"default": "{gd_resources_dir}/bigFont.fnt",
+			"type": "file",
+			"name": "Font File",
+			"enable-if": "use-custom-font",
+			"enable-if-description": "You cannot use custom fonts if custom fonts aren't enabled, silly!",
+			"description": "The .fnt file to use as the custom font.\n\nIf the text looks weird, try using the -uhd or -hd versions.",
+			"control": {
+				"dialog": "open",
+				"filters": [
+					{
+						"files": ["*.fnt"],
+						"description": "Bitmap Font Files"
+					}
+				]
+			}
 		}
 	},
 	"geode": "5.7.1",
@@ -57,7 +80,7 @@
 	},
 	"id": "demiomad.labeled-checkpoints",
 	"name": "Labeled Checkpoints",
-	"version": "v1.1.0",
+	"version": "v1.2.0",
 	"developer": "Demiomad",
 	"description": "Adds a percentage label to checkpoints",
 	"dependencies": {

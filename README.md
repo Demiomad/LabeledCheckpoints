@@ -5,7 +5,7 @@
 	</h3>
 </p>
 
-<p align="center">This mod adds a <b>percentage label</b> to checkpoints.</p>
+<p align="center">A Geode mod that adds a <b>percentage label</b> to checkpoints.</p>
 
 # How do I get it?
 1. Install [Geode](https://geode-sdk.org/install)

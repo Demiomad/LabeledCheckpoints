@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 
-class $modify(LCPauseLayer, PauseLayer) {
+class $modify(PauseLayer) {
     void customSetup() {    
         PauseLayer::customSetup();
 

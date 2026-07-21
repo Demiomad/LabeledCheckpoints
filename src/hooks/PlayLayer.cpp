@@ -4,6 +4,16 @@
 using namespace geode::prelude;
 
 class $modify(PlayLayer) {
+    std::string getCustomFntFile() {
+        auto mod = Mod::get();
+        auto customFontEnabled = mod->getSettingValue<bool>("use-custom-font");
+        if (!customFontEnabled)
+            return "bigFont.fnt";
+        
+        auto customFont = mod->getSettingValue<std::filesystem::path>("font-file");
+        return string::pathToString(customFont);
+    }
+
     std::string getFntFileFromIndex(int index) {
         switch (index) {
             case -3: {
@@ -37,6 +47,7 @@ class $modify(PlayLayer) {
             return checkpoint;
 
         auto mod = Mod::get();
+        auto customFontEnabled = mod->getSettingValue<bool>("use-custom-font");
         auto precision = mod->getSettingValue<int>("percentage-precision");
         auto scale = mod->getSettingValue<float>("label-size");
         auto opacity = mod->getSettingValue<float>("label-opacity");
@@ -46,7 +57,10 @@ class $modify(PlayLayer) {
         auto percent = this->getCurrentPercent();
         auto percentString = fmt::format("{:.{}f}%", percent, precision);
 
-        auto percentLabel = CCLabelBMFont::create(percentString.c_str(), getFntFileFromIndex(fontIndex).c_str());
+        std::string font = customFontEnabled ? getCustomFntFile() : getFntFileFromIndex(fontIndex);
+        log::debug("Font file: {}", font);
+
+        auto percentLabel = CCLabelBMFont::create(percentString.c_str(), font.c_str());
         auto physicalCheckpointObj = checkpoint->m_physicalCheckpointObject;
         auto contentSize = physicalCheckpointObj->getContentSize();
 
