@@ -80,7 +80,7 @@
 	},
 	"id": "demiomad.labeled-checkpoints",
 	"name": "Labeled Checkpoints",
-	"version": "v1.2.0",
+	"version": "v1.2.1",
 	"developer": "Demiomad",
 	"description": "Adds a percentage label to checkpoints",
 	"dependencies": {

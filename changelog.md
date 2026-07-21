@@ -1,3 +1,6 @@
+# 1.2.1
+- Made the custom font setting more <cg>foolproof</c> (in other words, check if the corresponding PNG file exists)
+
 # 1.2.0
 - <cg>Added</c> the ability to use a .fnt file.
 

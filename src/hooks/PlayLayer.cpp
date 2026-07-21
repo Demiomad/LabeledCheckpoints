@@ -1,5 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/PlayLayer.hpp>
+#include "../Utils.hpp"
 
 using namespace geode::prelude;
 
@@ -11,6 +12,9 @@ class $modify(PlayLayer) {
             return "bigFont.fnt";
         
         auto customFont = mod->getSettingValue<std::filesystem::path>("font-file");
+        if (!lcheckpoints::utils::imageFromFntExists(customFont))
+            return "bigFont.fnt";
+
         return string::pathToString(customFont);
     }
 
