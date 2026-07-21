@@ -71,7 +71,7 @@ jobs:
       - name: Get mod version
         id: get_version
         run: |
-          VERSION=$(jq -r '.version' mod.json)
+          VERSION=$(jq -r '.version' ./mod.json)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Create release
